@@ -13,6 +13,7 @@ The purpose of this project is to promote network privacy and security, and prov
 4.Any individual or organization should comply with the Internet-related laws and regulations when using this project and take full responsibility for their own actions.
 
 5.If any person or organization uses this project to harm Cloudflare's interests or violates its terms of service, it has nothing to do with the authors and contributors of this project, and all legal responsibilities shall be borne by the perpetrators themselves.
+
 Users are requested to read and understand the above disclaimer carefully before using this program, and if there is no objection, they are deemed to agree to and comply with all the provisions of this statement.
 
 User Guide: Creating an Encrypted DNS Worker on Cloudflare
