@@ -1,5 +1,8 @@
 Disclaimer
-This project is an open source project that aims to build a DNS over HTTPS (DoH) forwarding service using Cloudflare's Worker functionality. The purpose of this project is to promote network privacy and security, and provide users with more secure and privacy-protected DNS resolution services. However, users of this project are subject to the following disclaimers:
+
+This project is an open source project that aims to build a DNS over HTTPS (DoH) forwarding service using Cloudflare's Worker functionality. 
+
+The purpose of this project is to promote network privacy and security, and provide users with more secure and privacy-protected DNS resolution services. However, users of this project are subject to the following disclaimers:
 
 1.This project is for technical research and personal use only, and shall not be used for any purpose that violates laws and regulations or infringes on the rights and interests of others.
 
