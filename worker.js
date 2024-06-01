@@ -9,20 +9,20 @@ async function handleRequest(request) {
     url.pathname = '/dns-query'
     
     const newHeaders = new Headers(request.headers)
-    // Ensure headers are appropriate
     newHeaders.set('Host', 'security.cloudflare-dns.com')
     newHeaders.set('User-Agent', 'Cloudflare-Worker')
+    
+    const requestBody = await request.clone().text() // 确保请求体的正确传递
     
     const newRequest = new Request(url, {
       method: request.method,
       headers: newHeaders,
-      body: request.body,
-      redirect: 'manual' // We handle redirects ourselves
+      body: request.method !== 'GET' && request.method !== 'HEAD' ? requestBody : null,
+      redirect: 'manual' // 手动处理重定向
     })
     
     const response = await fetch(newRequest)
 
-    // Clone the response to be able to modify headers
     const newResponse = new Response(response.body, response)
     newResponse.headers.set('X-Content-Type-Options', 'nosniff')
     newResponse.headers.set('X-Frame-Options', 'DENY')
