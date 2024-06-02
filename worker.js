@@ -1,6 +1,6 @@
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request));
-})
+});
 
 async function handleRequest(request) {
   const url = new URL(request.url);
@@ -9,10 +9,11 @@ async function handleRequest(request) {
   if (url.pathname === '/dns-query') {
     const dohServerUrl = 'https://cloudflare-dns.com/dns-query';
 
-    // 仅保留必要的请求头
-    const necessaryHeaders = new Headers();
-    necessaryHeaders.set('Content-Type', 'application/dns-message');
-    necessaryHeaders.set('Accept', 'application/dns-message');
+    // 只保留必要的请求头
+    const necessaryHeaders = {
+      'Content-Type': 'application/dns-message',
+      'Accept': 'application/dns-message'
+    };
 
     // 读取请求体
     const requestBody = await request.arrayBuffer();
@@ -24,11 +25,12 @@ async function handleRequest(request) {
       body: requestBody
     });
 
-    // 仅保留必要的响应头
+    // 只保留必要的响应头
     const responseHeaders = new Headers();
     responseHeaders.set('Content-Type', 'application/dns-message');
     responseHeaders.set('X-Proxy-By', 'Cloudflare Worker');
 
+    // 返回 DoH 响应
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
